@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kryzzia Esteban</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        /* ── HERO ── */
+        .hero {
+            min-height: calc(100vh - 68px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px; left: -100px;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: var(--blue-glow);
+            filter: blur(100px);
+            pointer-events: none;
+        }
+
+        /* LEFT: text */
+        .hero-text {
+            display: flex;
+            align-items: flex-start;
+            padding: 2rem 3rem 2rem 5rem;
+        }
+
+        .hero-text-inner { max-width: 520px; }
+
+        .hero-greeting {
+            font-family: 'DM Sans', sans-serif;
+            font-size: .9rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            margin-bottom: .4rem;
+            margin-top: 2rem;
+        }
+
+        .hero-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.8rem);
+            letter-spacing: 3px;
+            line-height: 1;
+            color: var(--text);
+            margin-bottom: .5rem;
+        }
+
+        .hero-role {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            letter-spacing: 3px;
+            color: var(--blue-lt);
+             margin-bottom: 1.2rem;
+        }
+
+        .hero-bio {
+            font-size: .93rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+            max-width: 420px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-row { display: flex; gap: .6rem; }
+
+        /* RIGHT: photo */
+        .hero-right {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--dark2);
+        }
+
+        /* grid lines decoration */
+        .hero-grid {
+            position: absolute;
+            right: 50px; top: 40px;
+            width: 240px; height: 300px;
+            opacity: .06;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 26px, #fff 26px, #fff 27px),
+                repeating-linear-gradient(90deg, transparent, transparent 26px, #fff 26px, #fff 27px);
+            pointer-events: none;
+        }
+
+        /* floating orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #1a3a6e, #0a1428);
+            box-shadow: inset -4px -4px 12px rgba(0,0,0,.5), inset 2px 2px 8px rgba(26,115,232,.2);
+        }
+        .orb-1 { width: 70px; height: 70px; top: 80px; left: 50px; }
+        .orb-2 { width: 45px; height: 45px; bottom: 120px; right: 40px; }
+        .orb-3 { width: 30px; height: 30px; top: 220px; right: 90px; }
+
+        /* photo card — small rounded like inspo */
+        .hero-photo-wrap {
+            position: relative;
+            z-index: 2;
+            width: 40s0px;
+            height: 460px;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid rgba(26,115,232,.25);
+            box-shadow: 0 20px 60px rgba(0,0,0,.5);
+            margin-top: 20px;
+        }
+
+        .hero-photo-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+        }
+        .hero-photo-ph {
+            width: 100%; height: 100%;
+            background: #111d33;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hero-photo-ph i { font-size: 6rem; color: rgba(255,255,255,.06); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 991px) {
+            .hero { grid-template-columns: 1fr; }
+            .hero-right { min-height: 380px; order: -1; }
+            .hero-photo-wrap { width: 220px; height: 280px; }
+            .hero-text { padding: 3rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══ NAVBAR ══ -->
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">K.<span>Esteban</span></a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <i class="fas fa-bars" style="color:#fff"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto align-items-center gap-1">
+                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/journey">Journey</a></li>
+                <li class="nav-item"><a class="nav-link" href="/skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                <li class="nav-item ms-2"><a class="nav-link btn-nav" href="/about">Let's Talk</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+
+    <!-- LEFT: Text -->
+    <div class="hero-text">
+        <div class="hero-text-inner">
+            <p class="hero-greeting">Hey! I'm Kryzzia</p>
+            <h1 class="hero-name">I'M A BSIT<br>STUDENT</h1>
+            <p class="hero-role">Web Developer in Training</p>
+            <div class="divider"></div>
+            <p class="hero-bio">
+                I am Kryzzia, a first-year BSIT student at NEUST Papaya. 
+                While I enjoy the comfort of music, dramas, and my pet cats, 
+                I am equally passionate about my studies. I am constantly inspired 
+                to learn more about Information Technology, as I believe that 
+                staying curious is the key to becoming a successful professional 
+                in this ever-evolving field. 
+            </p>
+            <div class="hero-actions">
+                <a href="/about" class="btn-main">
+                    Get in Touch <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+                <div class="social-row">
+                    <a href="https://www.facebook.com/share/1DznJTHmq3/" target="_blank" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/p.izzia?igsh=dndqMmZndHlwN2J3" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/USERNAME" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT: Photo -->
+    <div class="hero-right">
+        <div class="hero-grid"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="hero-photo-wrap">
+            <img th:src="@{/images/profile.jpg}" alt="Kryzzia Esteban">
+        </div>
+    </div>
+
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <p class="foot-copy">&copy; 2025 Kryzzia Esteban. All rights reserved.</p>
+            <p class="foot-copy">BSIT &mdash; College of Information and Communication Technology</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    let lastScroll = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+        if (currentScroll > lastScroll && currentScroll > 80) {
+            navbar.style.transform = 'translateY(-100%)';
+            navbar.style.transition = 'transform 0.3s ease';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+            navbar.style.transition = 'transform 0.3s ease';
+        }
+        lastScroll = currentScroll;
+    });
+</script>
+
+</body>
+</html>

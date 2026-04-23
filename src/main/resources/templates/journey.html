@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey &mdash; Kryzzia Esteban</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        .timeline-section { padding: 3rem 0 6rem; }
+
+        .timeline { position: relative; padding-left: 2.5rem; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 1px;
+            background: var(--border);
+        }
+        .tl-item { position: relative; margin-bottom: 3.5rem; }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem; top: .45rem;
+            width: 9px; height: 9px;
+            border-radius: 50%;
+            background: var(--blue);
+            box-shadow: 0 0 10px var(--blue-glow);
+        }
+        .tl-label { font-size: .7rem; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue-lt); margin-bottom: .4rem; }
+        .tl-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 2px; color: var(--text); margin-bottom: .6rem; }
+        .tl-body { font-size: .9rem; color: var(--text-muted); line-height: 1.85; max-width: 540px; }
+
+        .journey-photos { padding: 0 0 5rem; }
+        .j-photo { height: 280px; overflow: hidden; }
+        .j-photo img, .j-photo .img-ph { width: 100%; height: 100%; object-fit: cover; }
+        .j-photo .img-ph { background: var(--dark3); display: flex; align-items: center; justify-content: center; }
+        .j-photo .img-ph i { font-size: 3.5rem; color: rgba(255,255,255,.06); }
+        .j-caption { font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: .6rem; }
+
+        .highlights-section { background: var(--dark2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 5rem 0; }
+        .hl-card { background: var(--card); border: 1px solid var(--border); padding: 2rem 1.8rem; height: 100%; transition: border-color .25s, background .25s; }
+        .hl-card:hover { border-color: rgba(26,115,232,.4); background: rgba(26,115,232,.06); }
+        .hl-tag { font-size: .68rem; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--blue-lt); margin-bottom: .75rem; display: block; }
+        .hl-card h5 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; color: var(--text); margin-bottom: .6rem; }
+        .hl-card p { font-size: .87rem; color: var(--text-muted); margin: 0; line-height: 1.8; }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <a class="navbar-brand" href="/">K.<span>Esteban</span></a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <i class="fas fa-bars" style="color:#fff"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto align-items-center gap-1">
+                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link active" href="/journey">Journey</a></li>
+                <li class="nav-item"><a class="nav-link" href="/skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
+                <li class="nav-item ms-2"><a class="nav-link btn-nav" href="/about">Let's Talk</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="timeline-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 mb-5 mb-lg-0">
+                <span class="section-label">The Road So Far</span>
+                <h2 class="section-title">Two Years of Growth</h2>
+                <div class="divider"></div>
+                <p style="font-size:.9rem;color:var(--text-muted);">College has been a mix of exciting discoveries, late-night study sessions, and unforgettable moments with classmates. Here is how my journey has unfolded.</p>
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+                <div class="timeline">
+                    <div class="tl-item">
+                        <p class="tl-label">1st Year — 1st Semester</p>
+                        <h4 class="tl-title">Starting from Zero</h4>
+                        <p class="tl-body">My first semester was a big adjustment — new environment, new subjects, new friends. After learning the basics of programming, I saw how important these skills are. It made me want to work hard and really learn the tech.</p>
+                    </div>
+                    <div class="tl-item">
+                        <p class="tl-label">1st Year — 2nd Semester</p>
+                        <h4 class="tl-title">Finding My Footing</h4>
+                        <p class="tl-body">I took on more challenging subjects and joined my first group project. Collaborating with classmates taught me communication skills beyond what any textbook could offer.</p>
+                    </div>
+                    <div class="tl-item">
+                        <p class="tl-label">2nd Year — Present</p>
+                        <h4 class="tl-title">Building Real Things</h4>
+                        <p class="tl-body">Now deeper into the program, I am learning web development with Java and Spring Boot, applying concepts to actual projects, and growing more confident in my abilities every day.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="journey-photos">
+    <div class="container">
+        <div class="text-center mb-4">
+            <span class="section-label">Captured Moments</span>
+            <h2 class="section-title">Along the Way</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="j-photo">
+                  
+                        <img th:src="@{/images/journey1.jpg}" alt="Class activity">
+                   
+                </div>
+                <p class="j-caption">Class Activities</p>
+            </div>
+            <div class="col-md-4">
+                <div class="j-photo">
+                    
+                       
+                        <img th:src="@{/images/journey2.jpg}" alt="School event">
+                   
+                </div>
+                <p class="j-caption">School Events</p>
+            </div>
+            <div class="col-md-4">
+                <div class="j-photo">
+                    
+                        
+                        <img th:src="@{/images/journey3.jpg}" alt="Project work">
+                   
+                </div>
+                <p class="j-caption">Project Work</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="highlights-section">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-label">Reflections</span>
+            <h2 class="section-title">College Life Highlights</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="hl-card">
+                    <span class="hl-tag">Favorite Subject</span>
+                    <h5>Web Development</h5>
+                    <p>The subject where I realized how much I enjoy creating things people can actually use and interact with.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="hl-card">
+                    <span class="hl-tag">Biggest Challenge</span>
+                    <h5>Balancing Everything</h5>
+                    <p>Managing academics, projects, and personal time has been my greatest challenge — and my greatest teacher.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="hl-card">
+                    <span class="hl-tag">What I Learned</span>
+                    <h5>Consistency Wins</h5>
+                    <p>Showing up every day, even on difficult days, makes all the difference. Small steps lead to big progress.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
+            <p class="foot-copy">&copy; 2025 Kryzzia Esteban. All rights reserved.</p>
+            <p class="foot-copy">BSIT &mdash; College of Information and Communication Technology</p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    let lastScroll = 0;
+    const navbar = document.querySelector('.navbar');
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.scrollY;
+
+        if (currentScroll > lastScroll && currentScroll > 80) {
+            // scroll pababa — itago
+            navbar.style.transform = 'translateY(-100%)';
+            navbar.style.transition = 'transform 0.3s ease';
+        } else {
+            // scroll pataas — ipakita
+            navbar.style.transform = 'translateY(0)';
+            navbar.style.transition = 'transform 0.3s ease';
+        }
+
+        lastScroll = currentScroll;
+    });
+</script>
+
+</body>
+</html>
